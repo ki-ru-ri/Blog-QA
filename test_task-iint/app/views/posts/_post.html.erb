@@ -1,0 +1,15 @@
+<h3 class="mt-4 mb-0"><%= post.title %></h3>
+<div class="text-muted fw-lighter mb-2">Published at <%= post.created_at.strftime('%Y.%m.%d') %></div>
+
+<div class="mb-4">
+  <%= raw post.html_body %>
+</div>
+
+<% if post.author == current_user %>
+  <%= link_to edit_post_path(post), class: 'btn btn-outline-success btn-sm' do %>
+    <i class="bi bi-journal-code"></i> Edit post
+  <% end %>
+  <%= link_to post_path(post), class: 'btn btn-outline-danger btn-sm', method: :delete, data: {confirm: 'Are you sure?'} do %>
+    <i class="bi bi-journal-x"></i> Delete post
+  <% end %>
+<% end %>

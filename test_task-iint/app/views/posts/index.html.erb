@@ -1,0 +1,13 @@
+<%= simple_form_for :search, url: '', method: :get do |f| %>
+  <%= f.input :q, label: 'Search', as: :string, input_html: {value: params.dig(:search, :q)} %>
+  <%= f.button :submit, 'Go', class: 'btn btn-outline-success btn-sm' %>
+  <%= link_to 'Reset', posts_url, class: 'btn btn-outline-secondary btn-sm' %>
+<% end %>
+
+<%= render partial: 'post', collection: @posts, as: :post %>
+
+<div class="mt-5">
+  <%= link_to new_post_path, class: 'btn btn-success' do %>
+    <i class="bi bi-journal-plus"></i> Add post
+  <% end %>
+</div>

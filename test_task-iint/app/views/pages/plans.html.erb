@@ -1,0 +1,25 @@
+<div class="row p-2">
+  <div class="col-sm-6">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Monthly</h5>
+        <p class="card-text">Pay $5 per month (<%= usd_to_czk(5) %> CZK <span class="text-muted">*</span>) to receive our full marketing support, analytics and much more</p>
+        <a href="mailto:sales@blog.example.com" class="btn btn-primary">Contact us</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card col-sm-6" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Yearly</h5>
+        <p class="card-text">
+          Pay $50 per year (<%= (usd_to_czk(50) * 0.8333).round %> CZK <span class="text-muted">*</span>) to receive our full marketing support, analytics and much more (<span class="text-success">16.6% off!</span>)
+        </p>
+        <a href="mailto:sales@blog.example.com" class="btn btn-primary">Contact us</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class=text-muted>* - calculated in accordance with European Bank exchange rates</p>

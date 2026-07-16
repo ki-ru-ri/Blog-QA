@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The blog platform</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <div class="p-3 bg-light bg-gradient d-flex flex-column justify-content-center align-items-center mt-0">
+      <div>
+        <% if current_user %>
+          Logged in as <%= current_user.email %> |
+          <%= link_to 'Home', root_path %> |
+          <%= link_to 'Profile', edit_user_registration_path %> |
+          <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to 'Home', root_path %> |
+          <%= link_to 'Sign in', new_user_session_path %> |
+          <%= link_to 'Sign up', new_user_registration_path %>
+        <% end %>
+      </div>
+      <div>
+        See our <%= link_to 'plans & pricing', plans_path %>
+      </div>
+    </div>
+
+    <% if alert.present? %>
+      <div class="alert alert-danger alert-dismissible fade show mt-0">
+        <%= alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    <% end %>
+    <% if notice.present? %>
+      <div class="alert alert-info alert-dismissible fade show mb-0">
+        <%= notice %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    <% end %>
+
+    <div class="container-fluid mt-4">
+      <%= yield %>
+    </div>
+  </body>
+</html>

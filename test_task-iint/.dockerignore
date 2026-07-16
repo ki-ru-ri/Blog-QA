@@ -1,0 +1,14 @@
+.git
+.gitignore
+/tmp
+/log
+Dockerfile*
+docker-compose*
+README.md
+/public/uploads
+.env
+.byebug_history
+dockercfg.encrypted
+codeship.aes
+
+.deploy/

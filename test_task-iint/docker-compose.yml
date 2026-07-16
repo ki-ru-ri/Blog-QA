@@ -1,0 +1,46 @@
+x-common-environment: &common-environment
+  DATABASE_URL: postgresql://postgres:blogpassword@db/blog_dev
+  EDITOR: nano
+  RAILS_LOG_TO_STDOUT: 'true'
+
+services:
+  web:
+    build:
+      context: .
+      target: base
+    environment:
+      <<: *common-environment
+    command: bash -c "bundle exec rails db:create && bundle exec rails db:migrate && bundle exec puma -C config/puma.rb"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/code
+    restart: unless-stopped
+    depends_on:
+      - db
+
+  webpacker:
+    build:
+      context: .
+      target: base
+    environment:
+      <<: *common-environment
+    command: bash -c "yarn install && ./bin/webpack-dev-server --inline true"
+    ports:
+      - "3035:3035"
+    volumes:
+      - .:/code
+    restart: unless-stopped
+
+  db:
+    image: "postgres:14"
+    restart: always
+    environment:
+      # note: this password is set only once when DB container is started first time
+      POSTGRES_PASSWORD: blogpassword
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pg:/var/lib/postgresql/data
+
+volumes:
+  pg:
