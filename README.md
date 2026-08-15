@@ -1,1 +1,1 @@
-You'll find it the folder
+You'll find it inside the folder.
