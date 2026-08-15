@@ -2,7 +2,7 @@
 
 ## What This Project Is
 
-The application under test was a blog platform where users can sign up, log in, and write and read blog posts. Built using Ruby on Rails, and packaged with Docker so it could be set up and run consistently on any computer.
+The application under test was a blog platform where users can sign up, log in, write and read blog posts. Built using Ruby on Rails, and packaged with Docker so it could be set up and run consistently on any computer.
 
 This repo contains the original provided application plus the QA work done against it: a feature/test plan, a set of bug tickets, and automated regression specs for the most significant defects found.
 
